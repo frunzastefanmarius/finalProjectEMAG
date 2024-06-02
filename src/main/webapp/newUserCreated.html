@@ -1,50 +1,45 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inregistrare si Logare</title>
+    <title>Cont Creat</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f0f0f0;
-            margin: 0;
         }
         .container {
-            text-align: center;
             background-color: white;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
-        .container h2 {
-            margin-bottom: 20px;
+        h1 {
             color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
         }
-        .form-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+        p {
+            color: #555;
+            margin-bottom: 20px;
+            font-size: 16px;
         }
         button {
             padding: 10px 20px;
-            font-size: 16px;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
-        }
-        .register-button {
-            background-color: #4CAF50;
-            color: white;
-        }
-        .login-button {
             background-color: #008CBA;
             color: white;
+            font-size: 16px;
+            cursor: pointer;
         }
         button:hover {
             opacity: 0.9;
@@ -53,15 +48,11 @@
 </head>
 <body>
 <div class="container">
-    <h2>Bine ai venit la magazinul nostru!</h2>
-    <div class="form-container">
-        <form action="register.html" method="POST">
-            <button type="submit" class="register-button">Inregistrare</button>
-        </form>
-        <form action="login.html" method="POST">
-            <button type="submit" class="login-button">Logare</button>
-        </form>
-    </div>
+    <h1>Contul dumneavoastra a fost creat cu succes</h1>
+    <p>Va rugam sa va logati pentru a continua.</p>
+    <form action="login.html" method="GET">
+        <button type="submit">Logare</button>
+    </form>
 </div>
 </body>
 </html>

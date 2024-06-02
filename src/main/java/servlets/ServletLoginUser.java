@@ -19,6 +19,25 @@ public class ServletLoginUser extends HttpServlet{
 
     protected void doGet(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
 
+        boolean isIn = Utility.isLoggedIn(request, resp);
+        if(isIn)
+        {
+            PrintWriter pw = null;
+            try {
+                pw = resp.getWriter();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            pw.println("Sunteti deja logat. Faceti intai logout");
+
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/dejaLogat.html");
+            dispatcher.forward(request, resp);
+
+            pw.close();
+            return;
+        }
+
         String un = request.getParameter("username");
         String pwd = request.getParameter("userpwd");
         User u = new User(un,pwd);
@@ -38,13 +57,16 @@ public class ServletLoginUser extends HttpServlet{
 
         if(idUser!=null) {
             pw.println("Bine ai venit in cont, " + u.getUsername());
+            HttpSession session = request.getSession();
+            session.setAttribute("idUser",idUser);
+            session.setAttribute("username",u.getUsername());
             RequestDispatcher dispatcher = request.getRequestDispatcher("/buyerMenu.jsp");
             dispatcher.forward(request, resp);
-            // sa il trimitem la produse
         }
         else
         {
-            pw.println("Login failed !");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/eroareParola.html");
+            dispatcher.forward(request, resp);
         }
     }
 

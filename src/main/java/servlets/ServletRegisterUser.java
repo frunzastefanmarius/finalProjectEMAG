@@ -54,7 +54,10 @@ public class ServletRegisterUser extends HttpServlet {
         }
 
         if (isOk) {
-            pw.println("Multumim pt inregistrare. Totul ok!");
+
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/newUserCreated.html");
+            dispatcher.forward(request, resp);
+
         } else {
             if (errM != null && errM.indexOf("duplicate key value violates unique constraint") != -1)
                 pw.println("Ne pare rau dar acest user deja exista");

@@ -1,18 +1,104 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>Autentificare</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Autentificare</h1>-->
+<!--<form name = "login" action="loginUser" method="GET">-->
+<!--    Username: <input type="text" name="username" id ="username"/></br>-->
+<!--    Pwd: <input type="text" name="userpwd" id ="userpwd"/></br>-->
+<!--    <input type="submit">-->
+<!--</form>-->
+<!--<form action="index.html" method="GET">-->
+<!--    <button type="submit">Inapoi la meniul principal</button>-->
+<!--</form>-->
+
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autentificare</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="password"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"],
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #5cb85c;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button {
+            background-color: #5bc0de;
+        }
+        button:hover,
+        input[type="submit"]:hover {
+            opacity: 0.9;
+        }
+        .back-button {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-<h1>Autentificare</h1>
-<form name = "login" action="loginUser" method="GET">
-    Username: <input type="text" name="username" id ="username"/></br>
-    Pwd: <input type="text" name="userpwd" id ="userpwd"/></br>
-    <input type="submit">
-</form>
-<form action="index.html" method="GET">
-    <button type="submit">Inapoi la meniul principal</button>
-</form>
-
+<div class="container">
+    <h1>Autentificare</h1>
+    <form name="login" action="loginUser" method="GET">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required/>
+        <label for="userpwd">Password:</label>
+        <input type="password" name="userpwd" id="userpwd" required/>
+        <input type="submit" value="Autentificare">
+    </form>
+    <div class="back-button">
+        <form action="index.html" method="GET">
+            <button type="submit">Inapoi la meniul principal</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>
+

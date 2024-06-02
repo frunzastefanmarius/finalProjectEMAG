@@ -14,24 +14,31 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Objects;
 
 
 @WebServlet("/showProducts")
 public class ServletShowProducts extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        HttpSession s = request.getSession();
-        Object o = s.getAttribute("idUser"); // daca pe sesiune exista obiectul numit id sau nu exista voi lua diferite decizii
+        HttpSession session = request.getSession();
+        Object o = session.getAttribute("idUser"); // daca pe sesiune exista obiectul numit id sau nu exista voi lua diferite decizii
+
+        //boolean variabila = Utility.isLoggedIn();
+        //TODO:aici e problema
 
         if(o!=null)
         {
-//            DBFoodList db = new DBFoodList();
-//            List<MyFoodList> l = db.getFoodList(iduser, search);
+//            Integer i = (Integer)o;
+//            int iduser = (int)i;
+//            String search = request.getParameter("search");
+//            if(search==null)
+//                search="";
 
             ProductManagementService pms = new ProductManagementService();
             List<ProductDisplay> products = pms.readAllForServlet();
             JSONObject json = new JSONObject();
-            json.put("listFromBackend", products); // only food name
+            json.put("listFromBackend", products);
             String result = json.toString();
             returnJsonResponse(response, result);
         }
@@ -64,5 +71,3 @@ public class ServletShowProducts extends HttpServlet {
         }
     }
 }
-
-//TODO:de trimis un json,

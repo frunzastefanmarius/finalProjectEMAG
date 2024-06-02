@@ -28,11 +28,6 @@ public class ServletLogout extends HttpServlet {
             throw new RuntimeException(e);
         }
 
-//        HttpSession session = request.getSession(false);
-//        if (session != null) {
-//            session.invalidate();
-//        }
-//        response.sendRedirect("login.html");
     }
 
 }
