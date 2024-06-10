@@ -152,5 +152,74 @@ public class DbBasketOperations {
         return listIdDeBasket;
 
     }
+    public boolean deleteBasketProductDB(Long iduser, Long idproduct) {
+        boolean isDeleted = false;
+
+        try {
+            final String URLDB = "jdbc:postgresql://localhost:5432/emag";
+            final String USERNAMEDB = "postgres";
+            final String PWDDB = "postgres";
+            Class.forName("org.postgresql.Driver");
+
+            Connection conn = DriverManager.getConnection(URLDB, USERNAMEDB, PWDDB);
+
+            // Create a prepared statement to delete the food item
+            String deleteQuery = "DELETE FROM basket WHERE iduser = ? AND idproduct = ?";
+            PreparedStatement pSt = conn.prepareStatement(deleteQuery);
+            pSt.setLong(1, iduser);
+            pSt.setLong(1, idproduct);
+
+            // Execute the delete query
+//            int deletedRows = pSt.executeUpdate();
+//
+//            if (deletedRows > 0) {
+//                isDeleted = true;
+//                System.out.println("managed to delete " +foodName.trim());
+//            }
+            isDeleted = true;
+
+            pSt.close();
+            conn.close();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+            isDeleted = false;
+        }
+
+        return isDeleted;
+    }
+    public List<BasketDisplay2> listaDeIdBasketDinBasketDB (Long iduser){
+        List<BasketDisplay2> listIdDeBasket = new ArrayList<>();
+
+        try {
+            final String URLDB = "jdbc:postgresql://localhost:5432/emag";
+            final String USERNAMEDB = "postgres";
+            final String PWDDB = "postgres";
+            Connection conn = DriverManager.getConnection(URLDB, USERNAMEDB, PWDDB);
+
+            String q = "select basket.idproduct\n" +
+                    "\tfrom basket\n" +
+                    "\twhere basket.iduser = ? \n" +
+                    "\torder by basket.id asc ";
+            PreparedStatement pSt = conn.prepareStatement(q);
+
+            pSt.setLong(1, iduser);
+
+            ResultSet rs = pSt.executeQuery();//executa queriul iar cat timp am rezultate retunreaza true
+
+
+            while (rs.next()) {//rs este ce imi returneaza baza de date
+                ;
+                long id = rs.getLong("id");
+
+                BasketDisplay2 IdBasketOfAUser = new BasketDisplay2(id);
+                //aici creaza un obiect de tipul ce vreau eu, si dupa il adauga in lista pe care o returneaza metoda.
+                listIdDeBasket.add(IdBasketOfAUser);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listIdDeBasket;
+
+    }
 
 }

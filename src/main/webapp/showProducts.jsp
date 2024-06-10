@@ -69,6 +69,20 @@
     });
 </script>
 
+<p>
+    <label for="name"></label>
+    <input type="text" id="name" placeholder="Cauta un produs" />
+    <input type="button" id="search" value="Cauta" onClick="search()" />
+</p>
+<p>
+    <input type="button" id="add" value="Adauga in cos" onClick="addToBasket()" />
+    <script>
+        $(document).ready(function() {
+            addToBasket();
+        });
+    </script>
+</p>
+
 <a href ="buyerMenu.jsp">Inapoi la meniul principal</a>
 </body>
 </html>

@@ -40,7 +40,9 @@ public class ServletShowProducts extends HttpServlet {
             JSONObject json = new JSONObject();
             json.put("listFromBackend", products);
             String result = json.toString();
+            System.out.println(result);//de debug pentru consola daca afiseaza inseamna ca intra aici
             returnJsonResponse(response, result);
+
         }
         else
         {

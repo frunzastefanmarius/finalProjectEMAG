@@ -29,9 +29,15 @@ public class BasketManagementService {
         return dbBasketOperations.deleteAllBasket(idUser);
 
     }
-    public List<BasketDisplay2> listaIdBasketFromBasket(Long idUser){
+    public List<BasketDisplay2> listaIdProductFromBasket(Long idUser){
         DbBasketOperations dbb = new DbBasketOperations();
-        return dbb.listaDeIdBasketDinBasket(idUser);
+        return dbb.listaDeIdBasketDinBasketDB(idUser);
+    }
+
+
+    public boolean deleteBasketProduct(Long idUser, Long idProduct){
+        DbBasketOperations dbb = new DbBasketOperations();
+        return dbb.deleteBasketProductDB(idUser, idProduct);
     }
 
 }
