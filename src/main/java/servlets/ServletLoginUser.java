@@ -70,6 +70,4 @@ public class ServletLoginUser extends HttpServlet{
         }
     }
 
-
-
 }

@@ -1,61 +1,74 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List my stuff</title>
-    <script src="actiuni.js" type="text/javascript" ></script>
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="actiuni.js" type="text/javascript"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .checkbox-cell {
+            text-align: center;
+        }
+        #listOfToDo {
+            margin-bottom: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
 
-<%
+<h1>Product List</h1>
 
-HttpSession s = request.getSession(); // citesc sesiunea curenta
-Object o = s.getAttribute("id"); // daca pe sesiune exista obiectul numit id sau nu exista voi lua diferite decizii
-Object email = s.getAttribute("email");
-if(o==null)
-{
-response.sendRedirect("login.html"); // il trimit la login, nici nu se executa ce e mai jos
-}
-%>
-
-Hello <b><%=email%></b>
-</p>
-
-<input type="text" placeholder="Search" onkeyup="search(this.value)">
-</p>
-<%--<input type="button" id="delete" value="Delete all" onClick="deleteAll()" />--%>
-
-<div id="listOfToDo">
-    <table border="1">
-        <thead>
-        <tr>
-            <%--            <th onclick="sorteazaNume(this)">Obiect &dArr;</th>--%>
-            <th>Food</th>
-            <th>Date</th>
-        </tr>
-        </thead>
-        <tbody id="obiect">
-
-        </tbody>
-
-
-    </table>
-<%--    <button id="deleteSelectedButton" onclick="deleteSelected()">Delete Selected</button>--%>
-</div>
-
+<div id="listOfToDo"></div>
+<table id="obiect">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Vendor Name</th>
+        <th>Category Name</th>
+        <th>Select</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+</table>
 <script>
-    loadToDo();
+    $(document).ready(function() {
+        showProductsJS();
+    });
 </script>
 
-</p>
-<input type="text" id="name" placeholder="Add my food" />
-<input type="button" id="add" value="New" onClick="newToDo()" />
-
-</p>
-<a href ="logout.jsp">Logout</a>
-
-<%--<a href ="http://localhost:8080/labLoginRegisterAndItems_war_exploded/userManagement?action=OUT">Logout</a>--%>
+<a href ="buyerMenu.jsp">Inapoi la meniul principal</a>
 </body>
 </html>

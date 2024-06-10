@@ -95,9 +95,8 @@
 <%--    %>--%>
     <h1>Menu pentru cumparator:</h1>
     <ul>
-        <li><a href="showProducts">Vizualizeaza lista de produse</a></li>
-        <li><a href="addProduct.html">Adauga un produs in cos</a></li>
-        <li><a href="viewBasket">Afiseaza cosul de cumparaturi</a></li>
+        <li><a href="showProducts.jsp">Vizualizeaza lista de produse</a></li>
+        <li><a href="showBasket.jsp">Afiseaza cosul de cumparaturi</a></li>
         <li><a href="deleteProduct">Sterge un produs din cos</a></li>
         <li><a href="clearBasket">Goleste cosul de cumparaturi</a></li>
         <li><a href="viewCategories">Afiseaza categoriile</a></li>

@@ -27,7 +27,6 @@ public class ServletLogout extends HttpServlet {
         } catch (ServletException | IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
 }

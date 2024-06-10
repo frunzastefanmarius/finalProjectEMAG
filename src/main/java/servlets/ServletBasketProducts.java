@@ -1,6 +1,8 @@
 package servlets;
 
+import controller.BasketManagementService;
 import controller.ProductManagementService;
+import entity.BasketDisplay;
 import entity.ProductDisplay;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,15 +12,13 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.json.JSONObject;
 
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import java.util.Objects;
 
 
-@WebServlet("/showProducts")
-public class ServletShowProducts extends HttpServlet {
+@WebServlet("/showBasket")
+public class ServletBasketProducts extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
@@ -29,18 +29,15 @@ public class ServletShowProducts extends HttpServlet {
 
         if(o!=null)
         {
-//            Integer i = (Integer)o;
-//            int iduser = (int)i;
-//            String search = request.getParameter("search");
-//            if(search==null)
-//                search="";
+            Long iduser = (Long)o;
 
-            ProductManagementService pms = new ProductManagementService();
-            List<ProductDisplay> products = pms.showAllProducts();
+            BasketManagementService bms = new BasketManagementService();
+            List<BasketDisplay> lb = bms.readBasket(iduser);
             JSONObject json = new JSONObject();
-            json.put("listFromBackend", products);
+            json.put("listBasket", lb);
             String result = json.toString();
             returnJsonResponse(response, result);
+
         }
         else
         {
