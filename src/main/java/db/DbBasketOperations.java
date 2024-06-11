@@ -13,6 +13,7 @@ public class DbBasketOperations {
 
     public boolean insert(Basket b) {
 
+        System.out.println("am intrat in insert basket");
         final String URLDB = "jdbc:postgresql://localhost:5432/emag";
         final String USERNAMEDB = "postgres";
         final String PWDDB = "vvv";
@@ -51,6 +52,9 @@ public class DbBasketOperations {
             String q = "select products.name as name, basket.id as id from products,basket \n" +
                     "\t where basket.iduser=? \n" +
                     "and basket.idproduct=products.id";
+
+            //TODO: trebuie sa fac un cod care sa aduca din db id din basket si pentru acel id numele din produscts din basket
+
             PreparedStatement pSt = conn.prepareStatement(q);
 
             pSt.setLong(1, idUser);

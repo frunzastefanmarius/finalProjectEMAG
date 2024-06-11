@@ -38,7 +38,7 @@ public class SellerMenu {
                     showAllUsers(b);
                     showMenuOptions(idUser);
                 case 3:
-                    showAllProducts();
+//                    showAllProducts();
                     showMenuOptions(idUser);
                 case 0:
                     endProgram();
@@ -49,15 +49,15 @@ public class SellerMenu {
         emag.start();
     }
 
-    public static void showAllProducts() {
-        System.out.println("Aceasta este lista de produse");
-        // list products
-        ProductManagementService pms = new ProductManagementService();
-        List<ProductDisplay> lp = pms.showAllProducts();
-        for (ProductDisplay p : lp) {
-            System.out.println(p);
-        }
-    }
+//    public static void showAllProducts() {
+//        System.out.println("Aceasta este lista de produse");
+//        // list products
+//        ProductManagementService pms = new ProductManagementService();
+//        List<ProductDisplay> lp = pms.showAllProducts();
+//        for (ProductDisplay p : lp) {
+//            System.out.println(p);
+//        }
+//    }
     public static void showAllUsers(boolean b) {
         int codUnic = 1234;
         System.out.println("Te rog sa introduci codul unic: ");

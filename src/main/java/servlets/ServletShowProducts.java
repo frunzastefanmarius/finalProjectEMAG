@@ -31,16 +31,17 @@ public class ServletShowProducts extends HttpServlet {
         {
 //            Integer i = (Integer)o;
 //            int iduser = (int)i;
-//            String search = request.getParameter("search");
-//            if(search==null)
-//                search="";
+            String searchParam = request.getParameter("search");
+            if(searchParam==null)
+                searchParam="";
 
             ProductManagementService pms = new ProductManagementService();
-            List<ProductDisplay> products = pms.showAllProducts();
+            List<ProductDisplay> products = pms.showAllProducts(searchParam);
             JSONObject json = new JSONObject();
             json.put("listFromBackend", products);
             String result = json.toString();
-            System.out.println(result);//de debug pentru consola daca afiseaza inseamna ca intra aici
+            System.out.println(result);
+            System.out.println("aici este searchParam: " + searchParam);//de debug pentru consola daca afiseaza inseamna ca intra aici
             returnJsonResponse(response, result);
 
         }

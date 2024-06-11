@@ -20,7 +20,8 @@ function display(lista) {
             "<td>" + obiect.price + "</td>" +
             "<td>" + obiect.vendorName + "</td>" +
             "<td>" + obiect.categoryName + "</td>" +
-            "<td class='checkbox-cell'><input type='checkbox' class='delete-checkbox' data-id='" + obiect.id + "'></td>" +
+            "<td class='delete-checkbox'><input type='checkbox' class='delete-checkbox' data-id='" + obiect.id + "'></td>" +
+
             "</tr>";
     });
     $("#obiect tbody").html(randuri);
@@ -81,12 +82,16 @@ function deleteSelected() {
 }
 
 function addToBasket() {
+    alert("am ajuns la 1");
     var selectedCheckboxes = $(".delete-checkbox:checked");
     var selectedidProduct = selectedCheckboxes.map(function () {
-        return $(this).data("idProduct");
+        return $(this).data("id");
     }).get();
+    //alert(selectedidProduct);
+
 
     if (selectedidProduct.length > 0) {
+        //alert("am ajuns aici");
         var url = "addToBasket";
         $.ajax({
             url: url,

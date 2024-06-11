@@ -41,7 +41,7 @@ public class DbProductsOperations {
         return ok;
     }
 
-    public List<ProductDisplay> readAllProducts() {
+    public List<ProductDisplay> readAllProducts(String searchParam) {
         List<ProductDisplay> lp = new ArrayList<>();
 
         try {
@@ -59,8 +59,12 @@ public class DbProductsOperations {
                     "\tfrom products, users, categories\n" +
                     "\twhere products.iduser=users.id \n" +
                     "\tand products.idcategory=categories.id \n" +
+                    "\tand products.name like CONCAT( '%',?,'%') \n" +//de aici modific dac avreau sa afiseze altceva
                     "\torder by users.username asc ";
             PreparedStatement pSt = conn.prepareStatement(q);
+
+            pSt.setString(1, searchParam);
+
 
             ResultSet rs = pSt.executeQuery();//executa queriul iar cat timp am rezultate retunreaza true
 

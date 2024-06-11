@@ -42,7 +42,7 @@ public class BuyerMenu {
 
             switch (userMenuOption) {
                 case 1:
-                    showAllProducts();
+//                    showAllProducts();
                     showMenuOptions(idUser);
                 case 2:
                     addProductsInBasket(idUser);
@@ -86,15 +86,15 @@ public class BuyerMenu {
         emag.start();
     }
 
-    public static void showAllProducts() {
-        System.out.println("Aceasta este lista de produse");
-        // list products
-        ProductManagementService pms = new ProductManagementService();
-        List<ProductDisplay> lp = pms.showAllProducts();
-        for (ProductDisplay p : lp) {
-            System.out.println(p);
-        }
-    }
+//    public static void showAllProducts() {
+//        System.out.println("Aceasta este lista de produse");
+//        // list products
+//        ProductManagementService pms = new ProductManagementService();
+//        List<ProductDisplay> lp = pms.showAllProducts();
+//        for (ProductDisplay p : lp) {
+//            System.out.println(p);
+//        }
+//    }
 
     public static void addProductsInBasket(Long idUser) {
         System.out.println("Adauga produse in cos:");

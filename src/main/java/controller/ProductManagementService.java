@@ -10,8 +10,8 @@ public class ProductManagementService {
     DbProductsOperations db = new DbProductsOperations();
 
 
-    public List<ProductDisplay> showAllProducts() {
-        return db.readAllProducts();
+    public List<ProductDisplay> showAllProducts(String searchParam) {
+        return db.readAllProducts(searchParam);
     }
 
     public boolean insert(Product p) {
