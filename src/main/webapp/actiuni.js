@@ -40,6 +40,7 @@ function search(myText) {
 }
 
 function showBasket() {
+    alert("am ajuns la showBasket din actiuni js");
     $.ajax({
         url: 'showBasket',
         method: 'GET',
@@ -51,11 +52,12 @@ function showBasket() {
     });
 }
 function displayBasket(lista) {
+    alert("am ajuns la display basket");
     var randuri = "";
     lista.forEach(function (obiect) {
         randuri += "<tr>" +
             "<td>" + obiect.id + "</td>" +
-            "<td>" + obiect.name + "</td>" +
+            "<td>" + obiect.productName + "</td>" +
             "<td class='checkbox-cell'><input type='checkbox' class='delete-checkbox' data-id='" + obiect.id + "'></td>" +
             "</tr>";
     });
@@ -82,7 +84,6 @@ function deleteSelected() {
 }
 
 function addToBasket() {
-    alert("am ajuns la 1");
     var selectedCheckboxes = $(".delete-checkbox:checked");
     var selectedidProduct = selectedCheckboxes.map(function () {
         return $(this).data("id");

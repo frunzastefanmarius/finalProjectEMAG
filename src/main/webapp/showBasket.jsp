@@ -52,8 +52,8 @@
 <table id="obiect">
     <thead>
     <tr>
-        <th>ID</th>
-        <th>Name</th>
+        <th>ID ul produsului</th>
+        <th>Denumirea Produsului</th>
     </tr>
     </thead>
     <tbody></tbody>

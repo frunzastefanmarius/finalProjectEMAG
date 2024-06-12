@@ -49,9 +49,20 @@ public class DbBasketOperations {
             final String PWDDB = "postgres";
             Connection conn = DriverManager.getConnection(URLDB, USERNAMEDB, PWDDB);
 
-            String q = "select products.name as name, basket.id as id from products,basket \n" +
-                    "\t where basket.iduser=? \n" +
-                    "and basket.idproduct=products.id";
+//            String q = "select products.name as name, basket.id as id from products,basket \n" +
+//                    "\t where basket.iduser=? \n" +
+//                    "and basket.idproduct=products.id";
+
+//            String q = "SELECT products.name AS name, basket.id AS id\n"+
+//                        "\t FROM products\n"+
+//                        "\t JOIN basket ON basket.idproduct = products.id\n"+
+//                        "WHERE basket.iduser = ?;";
+
+            String q = "SELECT basket.id AS id, products.name AS name\n" +
+                    "FROM products\n" +
+                    "INNER JOIN basket\n" +
+                    "ON products.id = basket.idproduct\n" +
+                    "WHERE basket.iduser = ?;";
 
             //TODO: trebuie sa fac un cod care sa aduca din db id din basket si pentru acel id numele din produscts din basket
 
