@@ -66,7 +66,7 @@
 
 <%--<input type="button" id="delete" value="Delete all" onClick="deleteAll()" />--%>
 <p>
-<button id="deleteSelectedButton" onclick="deleteSelected()">Delete Selected</button>
+    <input type="button" id="delete" value="Delete Selected" onClick="deleteSelected()" />
 </p>
 <p>
 <a href ="buyerMenu.jsp">Inapoi la meniul principal</a>

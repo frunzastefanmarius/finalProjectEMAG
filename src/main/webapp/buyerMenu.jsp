@@ -97,15 +97,14 @@
     <ul>
         <li><a href="showProducts.jsp">Vizualizeaza lista de produse</a></li>
         <li><a href="showBasket.jsp">Afiseaza cosul de cumparaturi</a></li>
-        <li><a href="deleteProduct">Sterge un produs din cos</a></li>
-        <li><a href="clearBasket">Goleste cosul de cumparaturi</a></li>
+<%--        <li><a href="deleteProduct">Sterge un produs din cos</a></li>--%>
         <li><a href="viewCategories">Afiseaza categoriile</a></li>
-        <li><a href="addAddress">Adauga o adresa</a></li>
-        <li><a href="viewAddresses">Afiseaza adresele mele</a></li>
-        <li><a href="deleteAddress">Sterge o adresa</a></li>
-        <li><a href="placeOrder">Plaseaza o comanda</a></li>
+<%--        <li><a href="addAddress">Adauga o adresa</a></li>--%>
+<%--        <li><a href="viewAddresses">Afiseaza adresele mele</a></li>--%>
+<%--        <li><a href="deleteAddress">Sterge o adresa</a></li>--%>
+<%--        <li><a href="placeOrder">Plaseaza o comanda</a></li>--%>
         <li><a href="viewOrders">Afiseaza comenzile mele</a></li>
-        <li><a href="viewUsers">Afiseaza lista userilor</a></li>
+<%--        <li><a href="viewUsers">Afiseaza lista userilor</a></li>--%>
         <li><a href="logout">Exit</a></li>
     </ul>
 

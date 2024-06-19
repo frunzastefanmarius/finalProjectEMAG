@@ -40,7 +40,6 @@ function search(myText) {
 }
 
 function showBasket() {
-    alert("am ajuns la showBasket din actiuni js");
     $.ajax({
         url: 'showBasket',
         method: 'GET',
@@ -52,7 +51,6 @@ function showBasket() {
     });
 }
 function displayBasket(lista) {
-    alert("am ajuns la display basket");
     var randuri = "";
     lista.forEach(function (obiect) {
         randuri += "<tr>" +
@@ -65,13 +63,16 @@ function displayBasket(lista) {
 }
 
 function deleteSelected() {
+    alert("am ajuns la deleteSelected din actiuniJS");
+
+    //cum fac aici sa selectez idproductul de pe randul ala gen?
+
     var selectedCheckboxes = $(".delete-checkbox:checked");
     var selectedidProduct = selectedCheckboxes.map(function () {
-        return $(this).data("idProduct");
+        return $(this).data("idProductForBasket");
     }).get();
-
     if (selectedidProduct.length > 0) {
-        var url = "deleteFromBasket"; // Updated with the correct URL for your delete servlet
+        var url = "deleteBasketProducts"; // Updated with the correct URL for your delete servlet
         $.ajax({
             url: url,
             method: "POST",
@@ -88,11 +89,8 @@ function addToBasket() {
     var selectedidProduct = selectedCheckboxes.map(function () {
         return $(this).data("id");
     }).get();
-    //alert(selectedidProduct);
-
 
     if (selectedidProduct.length > 0) {
-        //alert("am ajuns aici");
         var url = "addToBasket";
         $.ajax({
             url: url,

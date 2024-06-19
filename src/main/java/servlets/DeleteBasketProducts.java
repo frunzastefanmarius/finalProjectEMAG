@@ -15,6 +15,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -24,27 +25,29 @@ public class DeleteBasketProducts extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
 
+        System.out.println("am ajuns la deleteBasketProductServlet");
         HttpSession session = req.getSession();
         Long userId = (Long) session.getAttribute("id");
 
+        String idProductString = req.getParameter("idProductForBasket");
+        String[] idProductArray = idProductString.split(",");
+
         BasketManagementService bms = new BasketManagementService();
-        List<BasketDisplay2> listaDeIdProductsDinBasketTipDisplay = bms.listaIdProductFromBasket(userId);
 
-        List<Long> idProductList = new ArrayList<>();
-        for (BasketDisplay2 item : listaDeIdProductsDinBasketTipDisplay) {
-            idProductList.add(item.id);
-        }
+        //este o problema aici ca e long si nu Long?
+        long[] longArray = Arrays.stream(idProductArray).mapToLong(str -> {
+            try {
+                return Long.parseLong(str);
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid number: " + str);
+                return 0L;
+            }
+        }) .toArray();
 
-        Long[] idProductArray = idProductList.toArray(new Long[0]);
-
-        String idProductString = req.getParameter("idProduct");
-        Long idProduct = Long.parseLong(idProductString);
-
-
-        if (userId != null && idProductArray != null) {
+        if (userId != null && longArray != null) {
 
             boolean allDeletedSuccessfully = true;
-            for (Long idProdusCos : idProductArray) {
+            for (Long idProdusCos : longArray) {
                 System.out.println("sterg produsul cu id" + idProdusCos);
                 boolean deleted = bms.deleteBasketProduct(userId, idProdusCos);
                 if (!deleted) {

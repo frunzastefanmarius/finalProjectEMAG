@@ -32,13 +32,13 @@ public class AddBasketProducts extends HttpServlet {
             } catch (NumberFormatException e) {
                 System.err.println("Invalid number: " + str);
                 return 0L;
-            } }) .toArray();
+            }
+        }) .toArray();
 
                 System.out.println(idProductString + " de debug");
                 boolean productsAdded = false;
 
                 for (long idProdus : longArray) {
-                    System.out.println("aici m am blocat");
                     System.out.println("aici : "+userId+ " si "+idProdus);
 
                     Basket b = new Basket(userId, idProdus);

@@ -49,6 +49,6 @@ public class ServletAddProduct extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/addProduct.html").forward(request, response);
+        request.getRequestDispatcher("/buyerMenu.jsp").forward(request, response);
     }
 }
