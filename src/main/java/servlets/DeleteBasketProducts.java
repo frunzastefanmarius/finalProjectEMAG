@@ -23,13 +23,14 @@ import java.util.List;
 public class DeleteBasketProducts extends HttpServlet {
 
 
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) {
 
         System.out.println("am ajuns la deleteBasketProductServlet");
         HttpSession session = req.getSession();
         Long userId = (Long) session.getAttribute("id");
 
-        String idProductString = req.getParameter("idProductForBasket");
+        String idProductString = req.getParameter("idProduct");
+        System.out.println("asta e id: "+idProductString);
         String[] idProductArray = idProductString.split(",");
 
         BasketManagementService bms = new BasketManagementService();

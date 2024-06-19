@@ -73,13 +73,13 @@ function deleteSelected() {
 
     var selectedCheckboxes = $(".delete-checkbox:checked");
     var selectedidProduct = selectedCheckboxes.map(function () {
-        return $(this).data("idProductForBasket");
+        return $(this).data("idProduct");
     }).get();
     if (selectedidProduct.length > 0) {
         var url = "deleteBasketProducts"; // Updated with the correct URL for your delete servlet
         $.ajax({
             url: url,
-            method: "POST",
+            method: "DELETE",//DELETE in loc de post
             data: { idProduct: selectedidProduct.join(",") }, // Send selected idProducts to the server
             dataType: "json"
         }).done(function (response) {
