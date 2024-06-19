@@ -67,6 +67,10 @@ function deleteSelected() {
 
     //cum fac aici sa selectez idproductul de pe randul ala gen?
 
+    //poate nu ia acel id product de aici de unde trebuie
+
+    //dar nici nu afiseaza alertul de mai sus deci nu intra deloc aici?????
+
     var selectedCheckboxes = $(".delete-checkbox:checked");
     var selectedidProduct = selectedCheckboxes.map(function () {
         return $(this).data("idProductForBasket");
