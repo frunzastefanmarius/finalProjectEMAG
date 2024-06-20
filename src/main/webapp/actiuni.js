@@ -63,26 +63,24 @@ function displayBasket(lista) {
 }
 
 function deleteSelected() {
-    alert("am ajuns la deleteSelected din actiuniJS");
-
-    //cum fac aici sa selectez idproductul de pe randul ala gen?
     //poate nu ia acel id product de aici de unde trebuie
     //dar nici nu afiseaza alertul de mai sus deci nu intra deloc aici?????
 
     var selectedCheckboxes = $(".delete-checkbox:checked");
     var selectedidProduct = selectedCheckboxes.map(function () {
-        return $(this).data("id");
+        return $(this).data("id");//aici trebuie sa ramana id, de ce? nu stiu.
     }).get();
     if (selectedidProduct.length > 0) {
-        alert(selectedidProduct);
+        alert("am selectat urmatoarele id uri de produs: " + selectedidProduct);
         var url = "deleteBasketProducts"; // Updated with the correct URL for your delete servlet
         $.ajax({
             url: url,
-            method: "DELETE",//DELETE in loc de post
+            method: "POST",//DELETE in loc de post
             data: { idProduct: selectedidProduct.join(",") }, // Send selected idProducts to the server
             dataType: "json"
         }).done(function (response) {
-            location.href = "showBasket.jsp"; // Refresh the page or update as needed
+            location.href = "showBasket.jsp"; // am pus alta pagina sa vad daca intra si nu intra
+                                             // pe ea cum o face in codul de mai jos de la metoda addToBasket;
         });
     }
 }

@@ -22,17 +22,16 @@ import java.util.List;
 @WebServlet("/deleteBasketProducts")
 public class DeleteBasketProducts extends HttpServlet {
 
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
 
         System.out.println("am ajuns la deleteBasketProductServlet");
         HttpSession session = req.getSession();
-        Long userId = (Long) session.getAttribute("id");
+        Long userId = (Long) session.getAttribute("idUser");
+        System.out.println("userId in servlet delete este = "+userId);
 
-        String idProductString = req.getParameter("idProduct");
+        String idProductString = req.getParameter("idProduct");//la idProduct apare null
         System.out.println("asta e id: "+idProductString);
         String[] idProductArray = idProductString.split(",");
-
-        BasketManagementService bms = new BasketManagementService();
 
         //este o problema aici ca e long si nu Long?
         long[] longArray = Arrays.stream(idProductArray).mapToLong(str -> {
@@ -44,11 +43,16 @@ public class DeleteBasketProducts extends HttpServlet {
             }
         }) .toArray();
 
-        if (userId != null && longArray != null) {
+//        for(Long unaBucataId : longArray){
+//            System.out.println(unaBucataId);
+//        }//am verificat si aici le aduce bine adica le face ok in Long.:D
 
+        BasketManagementService bms = new BasketManagementService();
+
+        if (userId != null && longArray != null) {
             boolean allDeletedSuccessfully = true;
             for (Long idProdusCos : longArray) {
-                System.out.println("sterg produsul cu id" + idProdusCos);
+                System.out.println("sterg produsul cu id = " + idProdusCos);
                 boolean deleted = bms.deleteBasketProduct(userId, idProdusCos);
                 if (!deleted) {
                     allDeletedSuccessfully = false;
@@ -61,6 +65,7 @@ public class DeleteBasketProducts extends HttpServlet {
                 error(resp, "Failed to delete selected product items.");
             }
         } else {
+            System.out.println("am intrat pe else din deleteServlet");
             error(resp, "Operation forbidden. User is not logged in or no food items selected.");
         }
     }
