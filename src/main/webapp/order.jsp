@@ -35,7 +35,7 @@
         .checkbox-cell {
             text-align: center;
         }
-        #showBasket {
+        #listOfToDo {
             margin-bottom: 20px;
         }
         h1 {
@@ -46,32 +46,37 @@
 </head>
 <body>
 
-<h1>Cosul de cumparaturi</h1>
+<h1>Acestea sunt comenzile dumneavoastra</h1>
 
-<div id="showBasket"></div>
+<div id="listOfToDo"></div>
 <table id="obiect">
     <thead>
     <tr>
-        <th>ID ul produsului</th>
-        <th>Denumirea Produsului</th>
+        <th>createdtime</th>
+        <th>delivery</th>
+        <th>payment</th>
+        <th>iduser</th>
+        <th>idproduct</th>
+        <th>id</th>
     </tr>
     </thead>
     <tbody></tbody>
 </table>
 <script>
     $(document).ready(function() {
-        showBasket();
+        showProductsJSForOrder();
     });
 </script>
 
-<p>
-    <input type="button" id="delete" value="Delete Selected" onClick="deleteSelected()" />
-</p>
-<p>
-    <input type="button" id="placeOrder" value="Place Order" onClick="placeOrder()" />
-</p>
-<p>
+<%--<p>--%>
+<%--    <label for="name"></label>--%>
+<%--    <input type="text" id="name" placeholder="Cauta un produs" onkeyup="search(this.value)"/>--%>
+<%--    <input type="button" id="search" value="Cauta" onClick="search()" />--%>
+<%--</p>--%>
+<%--<p>--%>
+<%--    <input type="button" id="add" value="Adauga in cos" onClick="addToBasket()" />--%>
+<%--</p>--%>
+
 <a href ="buyerMenu.jsp">Inapoi la meniul principal</a>
-</p>
 </body>
 </html>

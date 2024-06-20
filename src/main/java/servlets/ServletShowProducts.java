@@ -24,13 +24,8 @@ public class ServletShowProducts extends HttpServlet {
         HttpSession session = request.getSession();
         Object o = session.getAttribute("idUser"); // daca pe sesiune exista obiectul numit id sau nu exista voi lua diferite decizii
 
-        //boolean variabila = Utility.isLoggedIn();
-        //TODO:aici e problema
-
         if(o!=null)
         {
-//            Integer i = (Integer)o;
-//            int iduser = (int)i;
             String searchParam = request.getParameter("search");
             if(searchParam==null)
                 searchParam="";
@@ -38,7 +33,7 @@ public class ServletShowProducts extends HttpServlet {
             ProductManagementService pms = new ProductManagementService();
             List<ProductDisplay> products = pms.showAllProducts(searchParam);
             JSONObject json = new JSONObject();
-            json.put("listFromBackend", products);
+            json.put("listFromBackendShow", products);
             String result = json.toString();
             System.out.println(result);
             System.out.println("aici este searchParam: " + searchParam);//de debug pentru consola daca afiseaza inseamna ca intra aici

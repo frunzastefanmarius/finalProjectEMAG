@@ -103,7 +103,7 @@
 <%--        <li><a href="viewAddresses">Afiseaza adresele mele</a></li>--%>
 <%--        <li><a href="deleteAddress">Sterge o adresa</a></li>--%>
 <%--        <li><a href="placeOrder">Plaseaza o comanda</a></li>--%>
-        <li><a href="viewOrders">Afiseaza comenzile mele</a></li>
+        <li><a href="order.jsp">Afiseaza comenzile mele</a></li>
 <%--        <li><a href="viewUsers">Afiseaza lista userilor</a></li>--%>
         <li><a href="logout">Exit</a></li>
     </ul>

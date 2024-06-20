@@ -17,6 +17,5 @@ public class OrdersManagementService {
         List<OrderDisplay> listOfOrders = dbOrdersOperations.readAllOrdersOfAUser(idUser);
         return listOfOrders;
 
-
     }
 }

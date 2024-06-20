@@ -4,7 +4,7 @@ function showProductsJS() {
         method: 'GET',
         dataType: 'json'
     }).done(function (response) {
-        display(response.listFromBackend);
+        display(response.listFromBackendShow);
     }).fail(function(jqXHR, textStatus, errorThrown) {
         console.error('Error loading products:', textStatus, errorThrown);
     });
@@ -35,7 +35,7 @@ function search(myText) {
             search: myText
         }
     }).done(function (response) {
-        display(response.listFromBackend);
+        display(response.listFromBackendShow);
     });
 }
 
@@ -103,7 +103,50 @@ function addToBasket() {
         });
     }
 }
-
+function placeOrder() {
+    var selectedCheckboxes = $(".delete-checkbox:checked");
+    var selectedidProduct = selectedCheckboxes.map(function () {
+        return $(this).data("id");//aici trebuie sa ramana id, de ce? nu stiu.
+    }).get();
+    if (selectedidProduct.length > 0) {
+        alert("am selectat urmatoarele id uri de produs pentru order: " + selectedidProduct);
+        var url = "deleteBasketProducts"; // Updated with the correct URL for your delete servlet
+        $.ajax({
+            url: url,
+            method: "POST",//DELETE in loc de post
+            data: { idProduct: selectedidProduct.join(",") }, // Send selected idProducts to the server
+            dataType: "json"
+        }).done(function (response) {
+            location.href = "order.jsp"; // am pus alta pagina sa vad daca intra si nu intra
+            // pe ea cum o face in codul de mai jos de la metoda addToBasket;
+        });
+    }
+}
+function showProductsJSForOrder() {
+    $.ajax({
+        url: 'order',
+        method: 'GET',
+        dataType: 'json'
+    }).done(function (response) {
+        orderDisplay(response.listFromBackend);
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+        console.error('Error loading products:', textStatus, errorThrown);
+    });
+}
+function orderDisplay(lista) {
+    var randuri = "";
+    lista.forEach(function (obiect) {
+        randuri += "<tr>" +
+            "<td>" + obiect.createdtime + "</td>" +
+            "<td>" + obiect.delivery + "</td>" +
+            "<td>" + obiect.payment + "</td>" +
+            "<td>" + obiect.iduser + "</td>" +
+            "<td>" + obiect.idproduct + "</td>" +
+            "<td>" + obiect.id + "</td>" +
+            "</tr>";
+    });
+    $("#obiect tbody").html(randuri);
+}
 
 
 
