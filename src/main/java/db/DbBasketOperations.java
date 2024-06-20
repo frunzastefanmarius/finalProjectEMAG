@@ -178,20 +178,17 @@ public class DbBasketOperations {
 
             Connection conn = DriverManager.getConnection(URLDB, USERNAMEDB, PWDDB);
 
-            // Create a prepared statement to delete the food item
-            String deleteQuery = "DELETE FROM basket WHERE iduser = ? AND idproduct = ?";
+            String deleteQuery = "DELETE FROM basket WHERE iduser = ? AND id = ?";
             PreparedStatement pSt = conn.prepareStatement(deleteQuery);
             pSt.setLong(1, iduser);
-            pSt.setLong(1, idproduct);
+            pSt.setLong(2, idproduct);
 
-            // Execute the delete query
-//            int deletedRows = pSt.executeUpdate();
-//
-//            if (deletedRows > 0) {
-//                isDeleted = true;
-//                System.out.println("managed to delete " +foodName.trim());
-//            }
-            isDeleted = true;
+
+            int rowsAffected = pSt.executeUpdate();
+            isDeleted = (rowsAffected > 0);
+
+
+//            isDeleted = true;
 
             pSt.close();
             conn.close();

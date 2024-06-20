@@ -27,10 +27,8 @@ public class DeleteBasketProducts extends HttpServlet {
         System.out.println("am ajuns la deleteBasketProductServlet");
         HttpSession session = req.getSession();
         Long userId = (Long) session.getAttribute("idUser");
-        System.out.println("userId in servlet delete este = "+userId);
 
         String idProductString = req.getParameter("idProduct");//la idProduct apare null
-        System.out.println("asta e id: "+idProductString);
         String[] idProductArray = idProductString.split(",");
 
         //este o problema aici ca e long si nu Long?

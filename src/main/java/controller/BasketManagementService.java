@@ -36,6 +36,7 @@ public class BasketManagementService {
 
 
     public boolean deleteBasketProduct(Long idUser, Long idProduct){
+        System.out.println("am ajuns la delete basket product din basket management service"+ idUser +"si"+idProduct);
         DbBasketOperations dbb = new DbBasketOperations();
         return dbb.deleteBasketProductDB(idUser, idProduct);
     }
