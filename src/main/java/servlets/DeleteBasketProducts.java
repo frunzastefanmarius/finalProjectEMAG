@@ -22,8 +22,7 @@ import java.util.List;
 @WebServlet("/deleteBasketProducts")
 public class DeleteBasketProducts extends HttpServlet {
 
-
-    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
 
         System.out.println("am ajuns la deleteBasketProductServlet");
         HttpSession session = req.getSession();

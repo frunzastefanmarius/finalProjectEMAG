@@ -66,16 +66,15 @@ function deleteSelected() {
     alert("am ajuns la deleteSelected din actiuniJS");
 
     //cum fac aici sa selectez idproductul de pe randul ala gen?
-
     //poate nu ia acel id product de aici de unde trebuie
-
     //dar nici nu afiseaza alertul de mai sus deci nu intra deloc aici?????
 
     var selectedCheckboxes = $(".delete-checkbox:checked");
     var selectedidProduct = selectedCheckboxes.map(function () {
-        return $(this).data("idProduct");
+        return $(this).data("id");
     }).get();
     if (selectedidProduct.length > 0) {
+        alert(selectedidProduct);
         var url = "deleteBasketProducts"; // Updated with the correct URL for your delete servlet
         $.ajax({
             url: url,
