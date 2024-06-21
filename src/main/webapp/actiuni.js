@@ -124,7 +124,7 @@ function placeOrder() {
 }
 function showProductsJSForOrder() {
     $.ajax({
-        url: 'order',
+        url: 'showOrder',
         method: 'GET',
         dataType: 'json'
     }).done(function (response) {

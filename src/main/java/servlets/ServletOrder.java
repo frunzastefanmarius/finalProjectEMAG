@@ -18,7 +18,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 
-    @WebServlet("/order")
+    @WebServlet("/showOrder")
     public class ServletOrder extends HttpServlet {
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
